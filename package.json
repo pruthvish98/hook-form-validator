@@ -1,0 +1,24 @@
+{
+  "name": "hook-form-validator",
+  "version": "1.0.0",
+  "description": "This is the Validator hook to easily and fastest way to validate the fields in React forms",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/pruthvish98/hook-form-validator.git"
+  },
+  "keywords": [
+    "hook-form",
+    "validation",
+    "form-validator"
+  ],
+  "author": "pruthvish",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/pruthvish98/hook-form-validator/issues"
+  },
+  "homepage": "https://github.com/pruthvish98/hook-form-validator#readme"
+}
