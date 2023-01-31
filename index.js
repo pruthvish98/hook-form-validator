@@ -27,7 +27,7 @@ function isPlainObject(o) {
   return true;
 }
 
-function isMergeableObject  (o)  {
+const isMergeableObject = (o) => {
 	return isPlainObject(o) || o.constructor.name === "Array";
 };
 
@@ -93,7 +93,7 @@ export const getByString = (o, s) => {
 	return o;
 };
 
-export const flatten = (obj = {}, prefix = "", res = {}) =>
+const flatten = (obj = {}, prefix = "", res = {}) =>
 	Object.entries(obj).reduce((r, [key, val]) => {
 		const k = `${prefix}${key}`;
 		const getOperator = (k) =>
@@ -101,14 +101,18 @@ export const flatten = (obj = {}, prefix = "", res = {}) =>
 				? `${k}.`
 				: `${k.split(".").slice(0, -1).join(".")}[${k.split(".").pop()}].`;
 		if (val && typeof val === "object") {
-			flatten(val, getOperator(k), r);
+			if (val instanceof Date) {
+				res[k] = val;
+			} else {
+				flatten(val, getOperator(k), r);
+			}
 		} else {
 			res[k] = val;
 		}
 		return r;
 	}, res);
 
-	export const getAllSelectorsFromNestedObject = (object = {}, newValue) => {
+export const getAllSelectorsFromNestedObject = (object = {}, newValue) => {
 	const objectWithNewValue = flatten(object);
 	for (const i in objectWithNewValue) objectWithNewValue[i] = newValue;
 	return objectWithNewValue;
@@ -175,7 +179,7 @@ const reducer = (state, action) => {
 	}
 };
 
- const useValidator = (props) => {
+const useValidator = (props) => {
 	if (!props.onSubmit) {
 		throw new Error("You forgot to pass onSubmit to useValidator!");
 	}
@@ -309,9 +313,10 @@ const reducer = (state, action) => {
 		getFieldProps,
 		clearFormState,
 		setErrors,
+		createFakeEvent,
 		// handleDelete,
 		...state,
 	};
 };
 
-export default useValidator
+export default useValidator;
