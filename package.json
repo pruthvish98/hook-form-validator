@@ -1,6 +1,6 @@
 {
   "name": "hook-form-validator",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "This is the Validator hook to easily and fastest way to validate the fields in React forms",
   "main": "index.js",
   "scripts": {
